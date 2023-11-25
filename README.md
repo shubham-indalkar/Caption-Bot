@@ -7,35 +7,48 @@
 
 ## Overview
 
-TG AutoCaption Bot is a Telegram bot designed to automatically caption files and videos in your channels. With customizable settings, it can add and remove certain text to the caption.
+TG AutoCaption Bot is a Telegram bot designed to automatically caption files and videos in your channels. With customizable settings, it can add and remove certain text from the caption.
 
 ## Configuration
 
-Edit the `config.py` file to customize the bot behavior according to your preferences. Below are some key configuration options:
+1. **Create a Bot on Telegram:**
+   - Start by creating a new bot on Telegram using [@BotFather](https://t.me/BotFather).
+   - After creating the bot, add it to your channel and grant it "Manage Messages" admin rights.
 
-- `CAPTION_TEXT`: Caption to be added below the file (Markdown supported).
-- `CAPTION_POSITION`: Position of the caption relative to the file name (TOP or BOTTOM or NIL).
-- `ADMIN_USERNAME`: Username to display in bot PM (without "@").
-- `WORDS_TO_REMOVE`: List of words to remove from existing captions.
-- `REGEX_PATTERNS`: List of regex patterns to remove from existing captions.
-- `ALLOWED_CHANNELS`: List of channel IDs to allow the bot. Leave empty to allow in all channels.
-- `WEBSITE_PREFIX`: Decide what to do with the caption text if it starts with a website (REMOVE or POSTFIX or NIL).
-- `YTS_WEBSITE_REPLACE`: Replace YIFY website credits with YTS (True or False).
+2. **Edit the `config.py` file:**
+   - Customize the bot behavior according to your preferences by editing the `config.py` file.
+   - Below are some key configuration options:
+
+     - `CAPTION_TEXT`: Caption to be added below the file (Markdown supported).
+     - `CAPTION_POSITION`: Position of the caption relative to the file name (TOP or BOTTOM or NIL).
+     - `ADMIN_USERNAME`: Username to display in bot PM (without "@").
+     - `WORDS_TO_REMOVE`: List of words to remove from existing captions.
+     - `REGEX_PATTERNS`: List of regex patterns to remove from existing captions.
+     - `ALLOWED_CHANNELS`: List of channel IDs to allow the bot. Leave empty to allow in all channels.
+     - `WEBSITE_PREFIX`: Decide what to do with the caption text if it starts with a website (REMOVE or POSTFIX or NIL).
+     - `YTS_WEBSITE_REPLACE`: Replace YIFY website credits with YTS (True or False).
 
 ## Deployment
 
 ### Local Deployment
 
-1. Download this repository.
-2. Install required packages using 
-```
-pip3 install -r requirements.txt
-```
-3. Edit the `config.py` file to configure variables.
-4. Run the bot using 
-```
-python3 bot.py
-```
+1. **Download this repository:**
+   - Clone or download this repository to your local machine.
+
+2. **Install required packages:**
+   - Open a terminal and run the following command:
+     ```bash
+     pip3 install -r requirements.txt
+     ```
+
+3. **Configure variables:**
+   - Edit the `config.py` file to set up your bot according to your preferences.
+
+4. **Run the bot:**
+   - Start the bot by running the following command in your terminal:
+     ```bash
+     python3 bot.py
+     ```
 
 ## Commands
 
