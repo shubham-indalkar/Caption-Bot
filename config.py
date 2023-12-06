@@ -28,4 +28,7 @@ class Config(object):
     WEBSITE_PREFIX = "POSTFIX"  
 
     # True or False. Replaces YIFY website with YTS
-    YTS_WEBSITE_REPLACE = True  
+    YTS_WEBSITE_REPLACE = True 
+
+    # Dictionary of words to replace
+    REPLACE_DICTIONARY = {}

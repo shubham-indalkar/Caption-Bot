@@ -27,6 +27,7 @@ TG AutoCaption Bot is a Telegram bot designed to automatically caption files and
      - `ALLOWED_CHANNELS`: List of channel IDs to allow the bot. Leave empty to allow in all channels.
      - `WEBSITE_PREFIX`: Decide what to do with the caption text if it starts with a website (REMOVE or POSTFIX or NIL).
      - `YTS_WEBSITE_REPLACE`: Replace YIFY website credits with YTS (True or False).
+     - `REPLACE_DICTIONARY`: Dictionary of key value pairs of original word in the caption to replace with another word.
 
 ## Deployment
 

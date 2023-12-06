@@ -19,6 +19,7 @@ words_to_remove = Config.WORDS_TO_REMOVE
 regex_patterns = Config.REGEX_PATTERNS
 website_prefix = Config.WEBSITE_PREFIX
 yts_website_replace = Config.YTS_WEBSITE_REPLACE
+replace_dictionary = Config.REPLACE_DICTIONARY
 
 def process_caption(text, words_to_remove, regex_patterns):
     """
@@ -42,6 +43,12 @@ def process_caption(text, words_to_remove, regex_patterns):
         # Remove words using regex patterns
         for pattern in regex_patterns:
             text = re.sub(pattern, "", text)
+            text = text.strip("\n")  # remove the next line
+
+    # replace dictionary words
+    if replace_dictionary:
+        for original_word, replacement_word in replace_dictionary:
+            text = text.replace(original_word, replacement_word)
             text = text.strip("\n")  # remove the next line
     
     # Remove website prefixes from caption
