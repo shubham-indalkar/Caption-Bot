@@ -45,9 +45,9 @@ def process_caption(text, words_to_remove, regex_patterns):
             text = re.sub(pattern, "", text)
             text = text.strip("\n")  # remove the next line
 
-    # replace dictionary words
+    # Apply REPLACE_DICTIONARY replacements
     if replace_dictionary:
-        for original_word, replacement_word in replace_dictionary:
+        for original_word, replacement_word in replace_dictionary.items():
             text = text.replace(original_word, replacement_word)
             text = text.strip("\n")  # remove the next line
     
