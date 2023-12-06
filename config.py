@@ -32,3 +32,6 @@ class Config(object):
 
     # Dictionary of words to replace
     REPLACE_DICTIONARY = {}
+
+    # Replace dot separator with space
+    SEPARATOR_SPACE = True

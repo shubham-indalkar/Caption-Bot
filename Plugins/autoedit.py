@@ -20,6 +20,7 @@ regex_patterns = Config.REGEX_PATTERNS
 website_prefix = Config.WEBSITE_PREFIX
 yts_website_replace = Config.YTS_WEBSITE_REPLACE
 replace_dictionary = Config.REPLACE_DICTIONARY
+separator_space = Config.SEPARATOR_SPACE
 
 def process_caption(text, words_to_remove, regex_patterns):
     """
@@ -44,12 +45,6 @@ def process_caption(text, words_to_remove, regex_patterns):
         for pattern in regex_patterns:
             text = re.sub(pattern, "", text)
             text = text.strip("\n")  # remove the next line
-
-    # Apply REPLACE_DICTIONARY replacements
-    if replace_dictionary:
-        for original_word, replacement_word in replace_dictionary.items():
-            text = text.replace(original_word, replacement_word)
-            text = text.strip("\n")  # remove the next line
     
     # Remove website prefixes from caption
     if website_prefix == "REMOVE":
@@ -62,6 +57,37 @@ def process_caption(text, words_to_remove, regex_patterns):
     
     if yts_website_replace:
         text = re.sub(r'\[YTS\.\w+\]', 'YTS', text, re.IGNORECASE)
+    
+    if separator_space:
+        if ' ' not in text:
+            splitted_text = text.split('.')
+            space_separated_text = ''
+
+            for word in splitted_text:
+                if word in ['5', '1', '0', '2', 'mkv', 'mp4', 'avi']:
+                    if word == '5':
+                        space_separated_text += ' 5.1'
+                    elif word == '2':
+                        space_separated_text += ' 2.0'
+                    elif word == 'mkv':
+                        space_separated_text += '.mkv'
+                    elif word == 'mp4':
+                        space_separated_text += '.mp4'
+                    elif word == 'avi':
+                        space_separated_text += '.avi'
+                elif word in ['org', 'Org', 'in', 'In', 'com', 'Com', 'net', 'Net', 'cc', 'Cc', 'shop', 'Shop', 'to', 'To', 'li', 'Li', 'me', 'Me', 'mom', 'Mom']:
+                    space_separated_text += f'.{word}'        
+                else:
+                    space_separated_text += f' {word}'
+        
+            text = space_separated_text
+            text = text.strip('\n')  # remove the next line
+    
+    # Apply REPLACE_DICTIONARY replacements
+    if replace_dictionary:
+        for original_word, replacement_word in replace_dictionary.items():
+            text = text.replace(original_word, replacement_word)
+            text = text.strip("\n")  # remove the next line
 
     # Ensure the modified text is not empty
     if text.strip():
